@@ -56,6 +56,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int Page = 0;
     
     public opcion creada = null;
+    public boolean iscreada = false;
     private HorarioCard best = null;
     
     public VentanaPrincipal() {
@@ -196,7 +197,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         move.setForeground(new java.awt.Color(102, 204, 255));
         move.setText("•");
         move.setToolTipText("");
-        move.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        move.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
         move.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 moveMouseDragged(evt);
@@ -752,6 +753,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         See.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         filts.setBackground(new java.awt.Color(209, 243, 222));
+        filts.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                filtsMouseMoved(evt);
+            }
+        });
         filts.setLayout(null);
 
         schetxt.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 24)); // NOI18N
@@ -764,7 +770,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(90, 90, 90));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Dias restringidos");
+        jLabel2.setText("Dias excluidos");
         filts.add(jLabel2);
         jLabel2.setBounds(50, 560, 160, 19);
 
@@ -796,7 +802,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         back3.setForeground(new java.awt.Color(127, 127, 127));
         back3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/editfuntions/backGray20.png"))); // NOI18N
         back3.setContentAreaFilled(false);
-        back3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        back3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         back3.setFocusPainted(false);
         back3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -816,7 +822,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         Horamax.setForeground(new java.awt.Color(127, 127, 127));
         Horamax.setText("Hora Máx.");
         filts.add(Horamax);
-        Horamax.setBounds(20, 360, 80, 19);
+        Horamax.setBounds(20, 380, 80, 19);
 
         Jue.setBackground(new java.awt.Color(153, 195, 172));
         Jue.setBorder(null);
@@ -860,13 +866,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         filts.add(Hmin);
-        Hmin.setBounds(200, 390, 40, 17);
+        Hmin.setBounds(200, 350, 40, 17);
 
         Horamin.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
         Horamin.setForeground(new java.awt.Color(127, 127, 127));
         Horamin.setText("Hora Min.");
         filts.add(Horamin);
-        Horamin.setBounds(20, 390, 80, 19);
+        Horamin.setBounds(20, 350, 80, 19);
 
         Espacio1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
         Espacio1.setForeground(new java.awt.Color(127, 127, 127));
@@ -911,7 +917,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         filts.add(Hmax);
-        Hmax.setBounds(200, 360, 40, 17);
+        Hmax.setBounds(200, 380, 40, 17);
 
         Vie.setBorder(null);
         Vie.setForeground(new java.awt.Color(204, 204, 204));
@@ -1036,7 +1042,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         Filt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Filt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/icons8_schedule_20px.png"))); // NOI18N
-        Filt.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Filt.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Filt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FiltMouseClicked(evt);
@@ -1067,7 +1073,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         filts.add(hormax);
-        hormax.setBounds(110, 360, 80, 20);
+        hormax.setBounds(110, 380, 80, 20);
 
         hormin.setForeground(new java.awt.Color(127, 127, 127));
         hormin.setBtnBack(new java.awt.Color(153, 195, 172));
@@ -1078,7 +1084,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
         filts.add(hormin);
-        hormin.setBounds(110, 390, 80, 20);
+        hormin.setBounds(110, 350, 80, 20);
 
         espmax.setForeground(new java.awt.Color(127, 127, 127));
         espmax.setBtnBack(new java.awt.Color(153, 195, 172));
@@ -1117,7 +1123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel28.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 19)); // NOI18N
         jLabel28.setForeground(new java.awt.Color(153, 195, 172));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("No hay ningún horario encontrado ");
+        jLabel28.setText("No hay ningún horario generado ");
         Nhorarios.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 140, 340, -1));
 
         jLabel29.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -1222,6 +1228,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         
         
+        cursosed.repaint();
+        opcionsed.repaint();
+        
     }
     
     
@@ -1256,17 +1265,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void unchoseChosen(){
         if (this.groupChosen == null) { return; }
-        this.groupChosen = null;
+        groupChosen = null;
         
         groupchoosen.unchose();
         groupchoosen.setChosen(false);
+        groupchoosen = null;
         
-        this.unchoseChosencurso();
-        this.unchoseChosenopcion();
         
+        unchoseChosencurso();
         
         UpdateCursoCards();
-        UpdateOpcionCards();
+        
+        System.out.println("Cantidad cartas " + curso.size());
     }
     
     
@@ -1281,7 +1291,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (this.groupChosen == null) {
             return;
         }
-        
         //System.out.println(this.groupChosen.toString());
         for (int i = 0; i < grupo.size(); i++) {
             Component group = grupo.get(i);
@@ -1295,6 +1304,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             });
         }
         this.grupo.clear();
+        System.out.println("CATAS GRUPO " + grupo);
         this.repaint();
     }
     //</editor-fold>
@@ -1336,7 +1346,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (this.cursoChosen == null) {
             return;
         }
-        this.cursoChosen = null;
+        cursoChosen = null;
         
         cursochoosen.unchose();
         cursochoosen.setChosen(false);
@@ -1344,7 +1354,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.unchoseChosenopcion();
         
         UpdateOpcionCards();
-        
     }
     
     
@@ -1357,26 +1366,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void RemoveCursocards(){
         
-        //System.out.println("CARDS: " + cursosed.getComponentCount());
+        System.out.println("REMOVING");
         for (int i = 0; i < curso.size(); i++) {
-            
             
             Component cruse = curso.get(i);
             
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     cursosed.remove(cruse);
-                    See.repaint();
+                    cursosed.revalidate();
+                    cursosed.repaint();
                 }
             });
         }
         
-        if (cursosed.getComponentCount() <= 4) {
-            this.curso.clear();
-        }
+        this.curso.clear();
         
         this.repaint();
         revisarEmpties();
+        System.out.println("FINISHED");
     }
     //</editor-fold>
     
@@ -1430,6 +1438,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         opcionchoosen.unchose();
         opcionchoosen.setChosen(false);
+        opcionchoosen = null;
     }
     
     
@@ -1474,11 +1483,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (groupChosen == null) return;
         horario hor = this.groupChosen.getHor();
         
-        totalpages = 1;
+        totalpages = 0;
         int step = 0;
         Hopcion actual = hor.getHhead();
         System.out.println(actual);
         while (actual != null){
+            
+            if (step%12 == 0) totalpages++;
+            
             HorarioCard nuevo = new HorarioCard();
             nuevo.setHorario(actual);
             nuevo.setVentana(this);
@@ -1489,8 +1501,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             nuevo.setPage((int)(Math.floor(step/12)));
             nuevo.setLine(((int)(Math.floor(step/3))%4));
             //if (step > 24) nuevo.setVisible(false);
-            
-            if (step%12 == 0) totalpages++;
             
             
             Hopcions.add(nuevo);
@@ -1559,6 +1569,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         
                         if (here.getLine() == Math.floor(counter/totalFrames)) {
                             here.setLocation(here.getX() + distance * dir, here.getY());
+                            if (here.getX() < 1000 && here.getX() > -300) {
+                                here.setVisible(true);
+                            } else{
+                                here.setVisible(false);
+                            }
                         }
                     }
                 }
@@ -1677,11 +1692,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void add3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add3ActionPerformed
         if (this.cursoChosen == null) return;
         
-        creada = cursoChosen.getListaopc().nuevaopcion(false);
+        creada = new opcion(cursoChosen.ndias, false);
         
         if (creada == null) return;
         
         for (int i = 0; i < cursoChosen.ndias; i++) {
+            if (creada == null) return;
+            
             CrearOpc nuevo = new CrearOpc();
             nuevo.variable = this.cursoChosen.getListaopc();
             nuevo.setSize(400, 300);
@@ -1693,6 +1710,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             repaint();
         }
         
+        if (creada.getDias().length != creada.ndias) return;
+        cursoChosen.getListaopc().nuevaopcion(creada);
     }//GEN-LAST:event_add3ActionPerformed
 
     private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
@@ -1735,7 +1754,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         this.UpdateCursoCards();
         this.UpdateGroupCards();
         this.UpdateOpcionCards();
-        
+        this.revisarEmpties();
     }//GEN-LAST:event_brushActionPerformed
 
     private void add2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_add2ActionPerformed
@@ -1835,6 +1854,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             hormin.setValue(hormax.getValue());
         }
         
+        ActualizarRange();
     }//GEN-LAST:event_HminActionPerformed
 
     private void HmaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HmaxActionPerformed
@@ -1854,6 +1874,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             hormin.setValue(hormax.getValue());
         }
         
+        ActualizarRange();
     }//GEN-LAST:event_HmaxActionPerformed
 
     private void VieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_VieActionPerformed
@@ -1940,15 +1961,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if (Page > 0) {
             moveAllHorarios(1);
-            System.out.println("Pagina   "+Page);
         }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if (Page < totalpages) {
+        if (Page+1 < totalpages) {
             moveAllHorarios(-1);
-            System.out.println("yolo");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -1965,13 +1984,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_hormaxMouseMoved
 
     private void hormaxMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_hormaxMouseClicked
+        ActualizarRange();
+    }//GEN-LAST:event_hormaxMouseClicked
+
+    private void filtsMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_filtsMouseMoved
+        ActualizarRange();
+    }//GEN-LAST:event_filtsMouseMoved
+    
+    
+     public void ActualizarRange(){
+        if (Hmin.getText().equals("PM") && Hmax.getText().equals("AM")) {
+            Hmin.doClick();
+        }
         if (Hmin.getText().equals(Hmax.getText()) && hormax.getValue() < hormin.getValue()) {
-            
             hormin.setValue(hormax.getValue());
         }
-    }//GEN-LAST:event_hormaxMouseClicked
-    
-    
+        
+        if (Hmin.getText().equals(Hmax.getText())) {
+            hormax.setMinVal(hormin.getValue());
+            hormin.setMaxVal(hormax.getValue());
+        }
+    }
     
     
     public void setFiltros(){
@@ -2046,7 +2079,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             butn.repaint();
         } else{
             butn.setSelected(true);
-            butn.setForeground(new Color(153,153,153));
+            butn.setForeground(new Color(204,204,204));
             butn.setColor(Color.white);
             butn.revalidate();
             butn.repaint();

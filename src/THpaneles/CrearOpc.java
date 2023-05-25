@@ -4,6 +4,8 @@ package THpaneles;
 import THVentanas.VentanaPrincipal;
 import THlogica.opcion;
 import THlogica.opciones;
+import custom.MyButton;
+import custom.MySpinner;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -27,6 +29,7 @@ public class CrearOpc extends javax.swing.JPanel {
 
     public void setPadre(VentanaPrincipal padre) {
         this.padre = padre;
+        
     }
 
     public opciones getVariable() {
@@ -48,8 +51,8 @@ public class CrearOpc extends javax.swing.JPanel {
         Salida = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         Cancelar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
+        guardar = new javax.swing.JButton();
         BTSALI = new custom.MyButton();
         BTENTRA = new custom.MyButton();
         comboEstudio2 = new javax.swing.JComboBox<>();
@@ -62,6 +65,17 @@ public class CrearOpc extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(169, 209, 142));
         bg.setForeground(new java.awt.Color(0, 0, 0));
+        bg.setOpaque(false);
+        bg.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                bgMouseMoved(evt);
+            }
+        });
+        bg.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                bgMouseExited(evt);
+            }
+        });
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         creandog.setBackground(new java.awt.Color(169, 209, 142));
@@ -89,37 +103,37 @@ public class CrearOpc extends javax.swing.JPanel {
         Cancelar.setText("Entrada");
         bg.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, -1));
 
-        jButton1.setBackground(new java.awt.Color(141, 196, 162));
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/icons8_close_20px.png"))); // NOI18N
-        jButton1.setText("Cancelar");
-        jButton1.setBorderPainted(false);
-        jButton1.setContentAreaFilled(false);
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton1.setFocusPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cancelar.setBackground(new java.awt.Color(141, 196, 162));
+        cancelar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
+        cancelar.setForeground(new java.awt.Color(255, 255, 255));
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/icons8_close_20px.png"))); // NOI18N
+        cancelar.setText("Cancelar");
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
+        cancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cancelar.setFocusPainted(false);
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cancelarActionPerformed(evt);
             }
         });
-        bg.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
+        bg.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
 
-        jButton2.setBackground(new java.awt.Color(141, 196, 162));
-        jButton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/icons8_save_22px.png"))); // NOI18N
-        jButton2.setText("Guardar");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jButton2.setFocusPainted(false);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        guardar.setBackground(new java.awt.Color(141, 196, 162));
+        guardar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
+        guardar.setForeground(new java.awt.Color(255, 255, 255));
+        guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/THimages/icons8_save_22px.png"))); // NOI18N
+        guardar.setText("Guardar");
+        guardar.setBorderPainted(false);
+        guardar.setContentAreaFilled(false);
+        guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        guardar.setFocusPainted(false);
+        guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                guardarActionPerformed(evt);
             }
         });
-        bg.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        bg.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
 
         BTSALI.setBackground(new java.awt.Color(101, 163, 130));
         BTSALI.setBorder(null);
@@ -167,12 +181,38 @@ public class CrearOpc extends javax.swing.JPanel {
         HENTRA.setBtnBack(new java.awt.Color(153, 195, 172));
         HENTRA.setMinVal(6);
         HENTRA.setTxtFore(new java.awt.Color(102, 102, 102));
+        HENTRA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HENTRAMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HENTRAMousePressed(evt);
+            }
+        });
+        HENTRA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                HENTRAPropertyChange(evt);
+            }
+        });
         bg.add(HENTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         HSALI.setForeground(new java.awt.Color(127, 127, 127));
         HSALI.setBtnBack(new java.awt.Color(153, 195, 172));
         HSALI.setMaxVal(9);
         HSALI.setTxtFore(new java.awt.Color(102, 102, 102));
+        HSALI.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                HSALIMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HSALIMouseEntered(evt);
+            }
+        });
+        HSALI.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                HSALIPropertyChange(evt);
+            }
+        });
         bg.add(HSALI, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, -1, -1));
 
         ELDIA.setForeground(new java.awt.Color(127, 127, 127));
@@ -193,51 +233,79 @@ public class CrearOpc extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
        if (padre.creada == null) return;
        
        int enplus = (BTENTRA.getText().equals("PM"))?12:0;
        int saplus = (BTSALI.getText().equals("PM"))?12:0;
-       padre.creada.creardia(ELDIA.getValue(), HENTRA.getValue()+enplus, HSALI.getValue()+saplus);
+       
+        if (!padre.creada.creardia(ELDIA.getValue(), HENTRA.getValue()+enplus, HSALI.getValue()+saplus)) {
+            return;
+        }
+
        
        padre.UpdateOpcionCards(); 
-       GlassPanePopup.closePopupLast();
-    }//GEN-LAST:event_jButton2ActionPerformed
+       GlassPanePopup.closePopupAll(); 
+    }//GEN-LAST:event_guardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          GlassPanePopup.closePopupLast();       
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        salir();  
+    }//GEN-LAST:event_cancelarActionPerformed
+    
+    
+    private void salir(){
+        padre.creada = null;
+        padre.iscreada = false;
+        GlassPanePopup.closePopupAll(); 
+    }
+    
+    
     private void BTSALIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTSALIActionPerformed
-       cmbiarM(this.BTSALI);
-       if (BTSALI.getText().equals("PM")) {
-            HSALI.setMaxVal(9);
-            HSALI.setMinVal(1);
-        }else {
-            HSALI.setMaxVal(12);
-            HSALI.setMinVal(6);
-        }
-        if (BTENTRA.getText().equals("PM") && BTSALI.getText().equals("AM")) {
-            BTENTRA.doClick();
-        }
-        if (BTENTRA.getText().equals(BTSALI.getText()) && HSALI.getValue() < HENTRA.getValue()) {
-            HENTRA.setValue(HSALI.getValue());
-        }
-        
+
+        CambiarJornada(BTSALI, HSALI);
         
     }//GEN-LAST:event_BTSALIActionPerformed
-
-    private void BTENTRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTENTRAActionPerformed
-        cmbiarM(this.BTENTRA);
-        
-        if (BTENTRA.getText().equals("PM")) {
-            HENTRA.setMaxVal(9);
-            HENTRA.setMinVal(1);
-        }else {
-            HENTRA.setMaxVal(12);
-            HENTRA.setMinVal(6);
+    
+    public void CambiarJornada(MyButton but, MySpinner spi){
+        cmbiarM(but);
+        if (but.getText().equals("PM")) {
+            spi.setMaxVal(9);
+            spi.setMinVal(1);
+        } else {
+            spi.setMaxVal(12);
+            spi.setMinVal(6);
         }
         
+        
+        ActualizarRange();
+    }
+    
+    
+    private void BTENTRAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTENTRAActionPerformed
+
+        CambiarJornada(BTENTRA, HENTRA);
+        
+    }//GEN-LAST:event_BTENTRAActionPerformed
+
+    private void bgMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseMoved
+        ActualizarRange();
+        if (padre.creada == null) salir();
+    }//GEN-LAST:event_bgMouseMoved
+
+    private void bgMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseExited
+        if (padre.creada == null) salir();
+    }//GEN-LAST:event_bgMouseExited
+
+    private void HENTRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HENTRAPropertyChange
+
+    }//GEN-LAST:event_HENTRAPropertyChange
+
+    private void HSALIPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HSALIPropertyChange
+
+    }//GEN-LAST:event_HSALIPropertyChange
+    
+    
+    public void ActualizarRange(){
         if (BTENTRA.getText().equals("PM") && BTSALI.getText().equals("AM")) {
             BTENTRA.doClick();
         }
@@ -245,7 +313,27 @@ public class CrearOpc extends javax.swing.JPanel {
             HENTRA.setValue(HSALI.getValue());
         }
         
-    }//GEN-LAST:event_BTENTRAActionPerformed
+        if (BTENTRA.getText().equals(BTSALI.getText())) {
+            HSALI.setMinVal(HENTRA.getValue());
+            HENTRA.setMaxVal(HSALI.getValue());
+        }
+    }
+    
+    private void HSALIMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HSALIMouseClicked
+        
+    }//GEN-LAST:event_HSALIMouseClicked
+
+    private void HENTRAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMousePressed
+
+    }//GEN-LAST:event_HENTRAMousePressed
+
+    private void HENTRAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMouseEntered
+
+    }//GEN-LAST:event_HENTRAMouseEntered
+
+    private void HSALIMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HSALIMouseEntered
+
+    }//GEN-LAST:event_HSALIMouseEntered
     
     
     public void cmbiarM(custom.MyButton boton){
@@ -347,10 +435,10 @@ public class CrearOpc extends javax.swing.JPanel {
     private custom.MySpinner HSALI;
     private javax.swing.JLabel Salida;
     private javax.swing.JPanel bg;
+    private javax.swing.JButton cancelar;
     private javax.swing.JComboBox<String> comboEstudio2;
     private javax.swing.JLabel creandog;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton guardar;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }

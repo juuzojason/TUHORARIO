@@ -182,7 +182,18 @@ public class opciones {
         return nueva;
     }
     
-    
+    public void nuevaopcion(opcion nueva) { //CREA UNA NUEVA OPCION QUE SE LE PROPORCIONA
+        if (cabeza == null) {
+            cabeza = nueva;
+            act = nueva;
+        } else {
+            act.sig = nueva;
+            nueva.ant = act;
+            act = nueva;
+        }
+        newaction(nueva,"added");
+        contaropciones();
+    }
     
     public String ListaOpciones() { // CREA UNA LISTA DE OPCIONES PARA MOSTRAE
         String Most = "";
