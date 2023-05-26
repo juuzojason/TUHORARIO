@@ -5,7 +5,7 @@ import java.awt.Color;
 
 
 public class COLORPALETTE {
-    public Color DisPane = new Color(245,245,245);
+    public Color DisPane = new Color(238,243,238);
     public Color EnPane = Color.white;
     
     public Color BgLight  = new Color(237,253,246);
@@ -19,10 +19,15 @@ public class COLORPALETTE {
     public Color LDarkText  = new Color(204,204,204);
     public Color LigthestText = new Color(255,255,255);
     
+    public Color GreenNormal = new Color(169,209,142);
     
     public Color WeirdDGreen = new Color(101,163,130);
     public Color WeirdGreen = new Color(153,195,172);
     
     public Color GreenTextField = new Color(204,255,204);
+
+    
+    public COLORPALETTE() {
+    }
     
 }

@@ -137,14 +137,25 @@ public class GroupCard extends javax.swing.JPanel {
             .addComponent(bg, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    
+    
+    
+    public void SetColors(){
+        name.setForeground(ventana.colores.DarkerText);
+        data.setForeground(ventana.colores.LDarkText);
+        bg.setBackground(ventana.colores.EnPane);
+    }
+    
+    
     private void bgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgMouseClicked
         
         if (!this.chosen) {
             ventana.unchoseChosen();
             ventana.setGroupChosen(this.thisGrupo);
             ventana.setGroupchoosen(this);
-
+            
+            
             ventana.UpdateCursoCards();
             ventana.UpdateOpcionCards();
             
@@ -193,7 +204,7 @@ public class GroupCard extends javax.swing.JPanel {
             this.delete.setLocation(230,0);
             this.delete.setEnabled(true);
             
-            this.bg.setBackground(Color.white);
+            bg.setBackground(ventana.colores.EnPane);
             this.jPanel1.setSize(18,60);
             
             this.bg.repaint();
@@ -207,7 +218,7 @@ public class GroupCard extends javax.swing.JPanel {
             this.delete.setLocation(270,0);
             this.delete.setEnabled(false);
             
-            this.bg.setBackground(new Color(245,245,245));
+            bg.setBackground(ventana.colores.DisPane);
             this.jPanel1.setSize(6,60);
             
             this.bg.repaint();
@@ -261,6 +272,7 @@ public class GroupCard extends javax.swing.JPanel {
 
     public void setVentana(VentanaPrincipal ventana) {
         this.ventana = ventana;
+        SetColors();
     }
 
     public grupo getThisGrupo() {

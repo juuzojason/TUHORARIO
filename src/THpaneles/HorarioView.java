@@ -396,32 +396,32 @@ public class HorarioView extends javax.swing.JPanel {
         Lunes.setBackground(new java.awt.Color(237, 253, 246));
         Lunes.setLayout(null);
         jPanel1.add(Lunes);
-        Lunes.setBounds(120, 30, 120, 480);
+        Lunes.setBounds(120, 30, 120, 460);
 
         Martes.setBackground(new java.awt.Color(209, 243, 222));
         Martes.setLayout(null);
         jPanel1.add(Martes);
-        Martes.setBounds(240, 30, 120, 480);
+        Martes.setBounds(240, 30, 120, 460);
 
         Miercoles.setBackground(new java.awt.Color(237, 253, 246));
         Miercoles.setLayout(null);
         jPanel1.add(Miercoles);
-        Miercoles.setBounds(360, 30, 120, 480);
+        Miercoles.setBounds(360, 30, 120, 460);
 
         Jueves.setBackground(new java.awt.Color(209, 243, 222));
         Jueves.setLayout(null);
         jPanel1.add(Jueves);
-        Jueves.setBounds(480, 30, 120, 480);
+        Jueves.setBounds(480, 30, 120, 460);
 
         Viernes.setBackground(new java.awt.Color(237, 253, 246));
         Viernes.setLayout(null);
         jPanel1.add(Viernes);
-        Viernes.setBounds(600, 30, 120, 480);
+        Viernes.setBounds(600, 30, 120, 460);
 
         Sabado.setBackground(new java.awt.Color(209, 243, 222));
         Sabado.setLayout(null);
         jPanel1.add(Sabado);
-        Sabado.setBounds(720, 30, 120, 480);
+        Sabado.setBounds(720, 30, 120, 460);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

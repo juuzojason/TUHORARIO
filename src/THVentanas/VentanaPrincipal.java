@@ -59,28 +59,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public boolean iscreada = false;
     private HorarioCard best = null;
     
+    public COLORPALETTE colores = new COLORPALETTE();
+    
     public VentanaPrincipal() {
         
-       
         initComponents();
         
         GlassPanePopup.install(this);
         
-        
         grupos.ReadGrupos();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/THimages/icon.png")));
-        setShape(new RoundRectangle2D.Double(0,0,getWidth(),getHeight(),18,18));
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 18, 18));
         setLocationRelativeTo(null);
         
-        
         this.GroupCards();
-       Ngrupenc.setVisible(false);
-       Ncursoenc.setVisible(false);
-       Ngrupesc.setVisible(false);
-       Ncursoesc.setVisible(false);
-       Nopcenc.setVisible(false);
-       Nhorarios.setVisible(false);
-       revisarEmpties();
+        Ngrupenc.setVisible(false);
+        Ncursoenc.setVisible(false);
+        Ngrupesc.setVisible(false);
+        Ncursoesc.setVisible(false);
+        Nopcenc.setVisible(false);
+        Nhorarios.setVisible(false);
+        revisarEmpties();
+        
+        SetColors();
     }
 
     
@@ -824,15 +825,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         filts.add(Horamax);
         Horamax.setBounds(20, 380, 80, 19);
 
-        Jue.setBackground(new java.awt.Color(153, 195, 172));
         Jue.setBorder(null);
-        Jue.setForeground(new java.awt.Color(255, 255, 255));
+        Jue.setForeground(new java.awt.Color(204, 204, 204));
         Jue.setText("Jue");
-        Jue.setBorderColor(new java.awt.Color(153, 195, 172));
+        Jue.setBorderColor(new java.awt.Color(255, 255, 255));
         Jue.setBorderPainted(false);
-        Jue.setColor(new java.awt.Color(153, 195, 172));
-        Jue.setColorClick(new java.awt.Color(153, 195, 172));
-        Jue.setColorOver(new java.awt.Color(153, 195, 172));
+        Jue.setColorClick(new java.awt.Color(255, 255, 255));
+        Jue.setColorOver(new java.awt.Color(255, 255, 255));
         Jue.setFocusPainted(false);
         Jue.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
         Jue.setRadius(20);
@@ -991,15 +990,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         filts.add(Sab);
         Sab.setBounds(170, 630, 60, 20);
 
-        Mar.setBackground(new java.awt.Color(153, 195, 172));
         Mar.setBorder(null);
-        Mar.setForeground(new java.awt.Color(255, 255, 255));
+        Mar.setForeground(new java.awt.Color(204, 204, 204));
         Mar.setText("Mar");
-        Mar.setBorderColor(new java.awt.Color(153, 195, 172));
+        Mar.setBorderColor(new java.awt.Color(255, 255, 255));
         Mar.setBorderPainted(false);
-        Mar.setColor(new java.awt.Color(153, 195, 172));
-        Mar.setColorClick(new java.awt.Color(153, 195, 172));
-        Mar.setColorOver(new java.awt.Color(153, 195, 172));
+        Mar.setColorClick(new java.awt.Color(255, 255, 255));
+        Mar.setColorOver(new java.awt.Color(255, 255, 255));
         Mar.setFocusPainted(false);
         Mar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
         Mar.setRadius(20);
@@ -1057,6 +1054,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         hormax.setForeground(new java.awt.Color(127, 127, 127));
         hormax.setBtnBack(new java.awt.Color(153, 195, 172));
         hormax.setMaxVal(9);
+        hormax.setTxtFore(new java.awt.Color(90, 90, 90));
         hormax.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 hormaxMouseMoved(evt);
@@ -1078,6 +1076,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         hormin.setForeground(new java.awt.Color(127, 127, 127));
         hormin.setBtnBack(new java.awt.Color(153, 195, 172));
         hormin.setMinVal(6);
+        hormin.setTxtFore(new java.awt.Color(90, 90, 90));
         hormin.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 horminPropertyChange(evt);
@@ -1088,12 +1087,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         espmax.setForeground(new java.awt.Color(127, 127, 127));
         espmax.setBtnBack(new java.awt.Color(153, 195, 172));
+        espmax.setTxtFore(new java.awt.Color(90, 90, 90));
         filts.add(espmax);
         espmax.setBounds(110, 450, 80, 20);
 
         diasmax.setForeground(new java.awt.Color(127, 127, 127));
         diasmax.setBtnBack(new java.awt.Color(153, 195, 172));
         diasmax.setMaxVal(6);
+        diasmax.setTxtFore(new java.awt.Color(90, 90, 90));
         filts.add(diasmax);
         diasmax.setBounds(110, 500, 80, 20);
 
@@ -1193,6 +1194,150 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         setLocation(x-move.getX()-15,y+move.getY()-25);
     }//GEN-LAST:event_moveMouseDragged
+    
+    
+    
+    private void SetColors(){
+        //Color verde normal
+        header.setBackground(colores.GreenNormal);
+        CODE.setBackground(colores.GreenNormal);
+        
+        
+        
+        
+        
+        //Texto blanco y fondosblancos
+        name.setForeground(colores.LigthestText);
+        CODE.setForeground(colores.LigthestText);
+        Hmin.setForeground(colores.LigthestText);
+        Hmax.setForeground(colores.LigthestText);
+        downthing.setBackground(colores.LigthestText);
+        
+        hormax.setBtnFore(colores.LigthestText);
+        hormin.setBtnFore(colores.LigthestText);
+        espmax.setBtnFore(colores.LigthestText);
+        diasmax.setBtnFore(colores.LigthestText);
+        hormax.setTxtBack(colores.LigthestText);
+        hormin.setTxtBack(colores.LigthestText);
+        espmax.setTxtBack(colores.LigthestText);
+        diasmax.setTxtBack(colores.LigthestText);
+        
+        Lun.setColor(colores.LigthestText);
+        Mar.setColor(colores.LigthestText);
+        Mie.setColor(colores.LigthestText);
+        Jue.setColor(colores.LigthestText);
+        Vie.setColor(colores.LigthestText);
+        Sab.setColor(colores.LigthestText);
+        
+        
+        
+        
+        
+        
+        //Weirdgreen
+        hormax.setBtnBack(colores.WeirdGreen);
+        hormin.setBtnBack(colores.WeirdGreen);
+        Hmax.setColor(colores.WeirdGreen);
+        Hmin.setColor(colores.WeirdGreen);
+        espmax.setBtnBack(colores.WeirdGreen);
+        diasmax.setBtnBack(colores.WeirdGreen);
+        
+        jLabel28.setForeground(colores.WeirdGreen);
+        jLabel29.setForeground(colores.WeirdGreen);
+        jLabel9.setForeground(colores.WeirdGreen);
+        jLabel18.setForeground(colores.WeirdGreen);
+        jLabel8.setForeground(colores.WeirdGreen);
+        jLabel24.setForeground(colores.WeirdGreen);
+        jLabel22.setForeground(colores.WeirdGreen);
+        jLabel19.setForeground(colores.WeirdGreen);
+        jLabel17.setForeground(colores.WeirdGreen);
+        jLabel10.setForeground(colores.WeirdGreen);
+        jLabel14.setForeground(colores.WeirdGreen);
+        jLabel11.setForeground(colores.WeirdGreen);
+        jLabel25.setForeground(colores.WeirdGreen);
+        jLabel21.setForeground(colores.WeirdGreen);
+        jLabel26.setForeground(colores.WeirdGreen);
+        jLabel15.setForeground(colores.WeirdGreen);
+        
+        jButton1.setForeground(colores.WeirdGreen);
+        jButton1.setForeground(colores.WeirdGreen);
+        
+        
+        
+        //LigtherText
+        Lun.setForeground(colores.LDarkText);
+        Mar.setForeground(colores.LDarkText);
+        Mie.setForeground(colores.LDarkText);
+        Jue.setForeground(colores.LDarkText);
+        Vie.setForeground(colores.LDarkText);
+        Sab.setForeground(colores.LDarkText);
+        
+        
+        
+        
+        
+        //darkText
+        labelgrupos.setForeground(colores.DarkText);
+        labelcursos.setForeground(colores.DarkText);
+        labelop.setForeground(colores.DarkText);
+        
+        jLabel3.setForeground(colores.DarkText);
+        jLabel5.setForeground(colores.DarkText);
+        jLabel6.setForeground(colores.DarkText);
+        
+        Horamax.setForeground(colores.DarkText);
+        Horamin.setForeground(colores.DarkText);
+        Espacio1.setForeground(colores.DarkText);
+        Espacio2.setForeground(colores.DarkText);
+        Horas.setForeground(colores.DarkText);
+        Horas1.setForeground(colores.DarkText);
+        
+        jSeparator1.setBackground(colores.DarkText);
+        jSeparator2.setBackground(colores.DarkText);
+        
+        
+        
+        
+        
+        //Darkest Text
+        jLabel2.setForeground(colores.DarkestText);
+        jLabel4.setForeground(colores.DarkestText);
+        schetxt.setForeground(colores.DarkestText);
+        schetxt1.setForeground(colores.DarkestText);
+        
+        hormax.setTxtFore(colores.DarkestText);
+        hormin.setTxtFore(colores.DarkestText);
+        espmax.setTxtFore(colores.DarkestText);
+        diasmax.setTxtFore(colores.DarkestText);
+        
+        
+        //BgDark
+        filts.setBackground(colores.BgDark);
+        cursosed.setBackground(colores.BgDark);
+        
+        //BgLight
+        Gruposed.setBackground(colores.BgLight);
+        opcionsed.setBackground(colores.BgLight);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     
     
     private void revisarEmpties(){
@@ -1617,6 +1762,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     public void setGroupchoosen(GroupCard groupchosen) {
         this.groupchoosen = groupchosen;
+        this.RemoveHorariocards();
+        if (best != null) filts.remove(best);
     }
 
     public grupo getGroupChosen() {
@@ -2073,14 +2220,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void cambiarD(custom.MyButton butn){
         if (butn.isSelected()) {
             butn.setSelected(false);
-            butn.setForeground(Color.white);
-            butn.setColor(new Color(153,195,172));
+            butn.setForeground(colores.LigthestText);
+            butn.setColor(colores.WeirdGreen);
             butn.revalidate();
             butn.repaint();
         } else{
             butn.setSelected(true);
-            butn.setForeground(new Color(204,204,204));
-            butn.setColor(Color.white);
+            butn.setForeground(colores.LDarkText);
+            butn.setColor(colores.EnPane);
             butn.revalidate();
             butn.repaint();
         }
@@ -2092,13 +2239,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (boton.getText().equals("AM")){
             boton.setSelected(true);
             boton.setText("PM");
-            boton.setBackground(new Color(101,163,130));
-            boton.setColor(new Color(101,163,130));
+            boton.setBackground(colores.WeirdDGreen);
+            boton.setColor(colores.WeirdDGreen);
         } else{
             boton.setText("AM");
             boton.setSelected(false);
-            boton.setBackground(new Color(153,195,172));
-            boton.setColor(new Color(153,195,172));
+            boton.setBackground(colores.WeirdGreen);
+            boton.setColor(colores.WeirdGreen);
         }
     }
     

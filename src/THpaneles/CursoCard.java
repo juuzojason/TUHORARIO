@@ -39,7 +39,11 @@ public class CursoCard extends javax.swing.JPanel {
         this.jPanel1.setBackground(new Color(hashCode));
     }
     
-    
+    public void SetColors(){
+        name.setForeground(ventana.colores.DarkerText);
+        data.setForeground(ventana.colores.LDarkText);
+        bg.setBackground(ventana.colores.DisPane);
+    }
     
     public void chose(){
         SwingUtilities.invokeLater(() -> {
@@ -47,7 +51,7 @@ public class CursoCard extends javax.swing.JPanel {
             this.delete.setLocation(200,0);
             this.delete.setEnabled(true);
             
-            this.bg.setBackground(Color.white);
+            bg.setBackground(ventana.colores.EnPane);
             this.jPanel1.setSize(18,60);
             
             this.bg.repaint();
@@ -61,7 +65,7 @@ public class CursoCard extends javax.swing.JPanel {
             this.delete.setLocation(270,0);
             this.delete.setEnabled(false);
             
-            this.bg.setBackground(new Color(245,245,245));
+            bg.setBackground(ventana.colores.DisPane);
             this.jPanel1.setSize(6,60);
             
             this.bg.repaint();
@@ -106,6 +110,7 @@ public class CursoCard extends javax.swing.JPanel {
 
     public void setVentana(VentanaPrincipal ventana) {
         this.ventana = ventana;
+        SetColors();
     }
 
     public curso getThisCurso() {
@@ -164,7 +169,7 @@ public class CursoCard extends javax.swing.JPanel {
         data = new javax.swing.JLabel();
         delete = new javax.swing.JButton();
 
-        bg.setBackground(new java.awt.Color(245, 245, 245));
+        bg.setBackground(new java.awt.Color(243, 255, 243));
         bg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 bgMouseClicked(evt);

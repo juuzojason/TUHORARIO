@@ -19,7 +19,6 @@ import javax.swing.border.Border;
 
 public class OptionCard extends javax.swing.JPanel {
     
-    int[] disabled  = {245,245,245};
     public static int[][] hour = {{255,255,204},{255,238,185},{255,222,189},{173,193,229},{115,123,199},{47,85,151}};
     
     private int[] He = {2,0,0};
@@ -41,7 +40,21 @@ public class OptionCard extends javax.swing.JPanel {
         this.del.setVisible(false);
 
     }
-  
+    
+    
+    public void SetColors(){
+        DATA1.setForeground(ventana.colores.DarkText);
+        DATA2.setForeground(ventana.colores.DarkText);
+        DATA.setForeground(ventana.colores.DarkText);
+        
+        DAY1.setBackground(ventana.colores.DisPane);
+        DAY2.setBackground(ventana.colores.DisPane);
+        DAY3.setBackground(ventana.colores.DisPane);
+        
+        del.setForeground(ventana.colores.DarkerText);
+    }
+    
+    
     
     public static Color Hourcolor(int hourr){
         
@@ -249,13 +262,13 @@ public class OptionCard extends javax.swing.JPanel {
     private void chose(){
         SwingUtilities.invokeLater(() -> {
             this.sun.setLocation(130,this.sun.getY());
-            this.DAY1.setBackground(Color.white);
-            
             this.sun1.setLocation(130,this.sun.getY());
-            this.DAY2.setBackground(Color.white);
-            
             this.sun2.setLocation(130,this.sun.getY());
-            this.DAY3.setBackground(Color.white);
+            
+            DAY1.setBackground(ventana.colores.EnPane);
+            DAY2.setBackground(ventana.colores.EnPane);
+            DAY3.setBackground(ventana.colores.EnPane);
+            
             
             this.del.setEnabled(true);
             this.del.setVisible(true);
@@ -265,14 +278,13 @@ public class OptionCard extends javax.swing.JPanel {
     
     public void unchose(){
         SwingUtilities.invokeLater(() -> {
+            DAY1.setBackground(ventana.colores.DisPane);
+            DAY2.setBackground(ventana.colores.DisPane);
+            DAY3.setBackground(ventana.colores.DisPane);
+            
             this.sun.setLocation(153,this.sun.getY());
-            this.DAY1.setBackground(new Color(disabled[0],disabled[1],disabled[2]));
-            
             this.sun1.setLocation(153,this.sun.getY());
-            this.DAY2.setBackground(new Color(disabled[0],disabled[1],disabled[2]));
-            
             this.sun2.setLocation(153,this.sun.getY());
-            this.DAY3.setBackground(new Color(disabled[0],disabled[1],disabled[2]));
             
             this.del.setEnabled(false);
             this.del.setVisible(false);

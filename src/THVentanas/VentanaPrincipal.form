@@ -1277,28 +1277,22 @@
                 </Component>
                 <Component class="custom.MyButton" name="Jue">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Jue"/>
                     <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
-                    </Property>
                     <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="colorOver" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1582,28 +1576,22 @@
                 </Component>
                 <Component class="custom.MyButton" name="Mar">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
-                    </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                      <Color blue="cc" green="cc" red="cc" type="rgb"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Mar"/>
                     <Property name="borderColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="borderPainted" type="boolean" value="false"/>
-                    <Property name="color" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
-                    </Property>
                     <Property name="colorClick" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="colorOver" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ac" green="c3" red="99" type="rgb"/>
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -1686,6 +1674,9 @@
                       <Color blue="ac" green="c3" red="99" type="rgb"/>
                     </Property>
                     <Property name="maxVal" type="int" value="9"/>
+                    <Property name="txtFore" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="hormaxMouseMoved"/>
@@ -1707,6 +1698,9 @@
                       <Color blue="ac" green="c3" red="99" type="rgb"/>
                     </Property>
                     <Property name="minVal" type="int" value="6"/>
+                    <Property name="txtFore" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                    </Property>
                   </Properties>
                   <Events>
                     <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="horminPropertyChange"/>
@@ -1725,6 +1719,9 @@
                     <Property name="btnBack" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ac" green="c3" red="99" type="rgb"/>
                     </Property>
+                    <Property name="txtFore" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1741,6 +1738,9 @@
                       <Color blue="ac" green="c3" red="99" type="rgb"/>
                     </Property>
                     <Property name="maxVal" type="int" value="6"/>
+                    <Property name="txtFore" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="5a" green="5a" red="5a" type="rgb"/>
+                    </Property>
                   </Properties>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
