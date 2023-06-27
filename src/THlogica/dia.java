@@ -4,15 +4,19 @@ public class dia {
 
     private int dia;
     private int hd; //Hora entrada
+    private int md; //Minutos de entrada
     private int hds; //Hora salida
+    private int mds; //Minutos de salida
 
     public dia sig;
     public dia ant;
 
-    public dia(int dia, int hd, int hds) {
+    public dia(int dia, int hd, int hds, int md, int mds) {
         this.dia = dia;
         this.hd = hd;
         this.hds = hds;
+        this.md = md;
+        this.mds = mds;
     }
 
     public int getDia() {
@@ -39,6 +43,25 @@ public class dia {
         this.hds = hds;
     }
 
+    public int getMd() {
+        return md;
+    }
+
+    public void setMd(int md) {
+        this.md = md;
+    }
+
+    public int getMds() {
+        return mds;
+    }
+
+    public void setMds(int mds) {
+        this.mds = mds;
+    }
+    
+    
+    
+    
     //DEVUELVE LA CONVERSIÓN DEL NUMERO AL DÍA
     public static String nombreDia(int dia) {
         String nombre = "";
@@ -93,27 +116,27 @@ public class dia {
     }
     
 
-    public static String convertirHora(int horaM) {
+    public static String convertirHora(int horaM, int m) {
         int h = horaM;
 
         // Convertir la hora a formato de 12 horas
         String horaMilitar = (h < 12) ? "am" : "pm";
         h = (h == 12) ? 12 : h % 12;
-
-        return h + " " + horaMilitar;
+        String mm = (m >= 10) ?  ""+(m) : ("0" + m);
+        return h + ":" + mm + " " + horaMilitar;
     }
 
     //RETORNA SI SE CRUZA EL DIA CON LA HORA DADA
-    public boolean cruza(int day, int start, int end) {
-        return (day == this.dia && !((hds <= start) || end <= hd));
+    public boolean cruza(int day, int start, int end, int mst, int mend) {
+        return (day == this.dia && !((hds + mds/60.0 <= start + mst/60.0) || end + mend/60.0 <= hd + md/60.0));
     }
 
     public String encript() {
-        return (char) (dia + 97) + "" + (char) (hd + 97) + "" + (char) (hds + 97) + "";
+        return (char) (dia + 97) + "" + (char) (hd + 97) + "" + ((md >= 10) ? (""+md) : ("0" + md) ) + "" + (char) (hds + 97) + "" + ((mds >= 10) ? (""+mds) : ("0" + mds) );
     }
     
-    public int Hcant(){
-        return hds- hd;
+    public double Hcant(){
+        return hds - hd + (mds - md)/60.0;
     }
     
 }

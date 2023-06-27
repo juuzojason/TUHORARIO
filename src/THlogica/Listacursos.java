@@ -41,7 +41,7 @@ public class Listacursos {
         }
         System.out.println("SE ELIMINO" + actual.nombre);
         newaction(actual, "deleted");
-        actual.mostrarcurso();
+        //actual.mostrarcurso();
         contarcursos();
     }
     
@@ -146,7 +146,7 @@ public class Listacursos {
             this.act.sig = nuevo;
             this.act = localact;
         }
-        nuevo.mostrarcurso();
+        //nuevo.mostrarcurso();
         listacursos();
         contarcursos();
     }
@@ -217,7 +217,7 @@ public class Listacursos {
         while (actual != null) {
             cont++;
             show += actual.nombre + "\n";
-            show += (actual.chosenone != null) ? actual.chosenone.mostrar() + "\n" : "";
+            //show += (actual.chosenone != null) ? actual.chosenone.mostrar() + "\n" : "";
             actual = actual.sig;
         }
         JOptionPane.showMessageDialog(null, show);

@@ -214,7 +214,7 @@ public class grupos {
             actual = actual.next;
         }
         
-        actual.menu();
+        //actual.menu();
     }
     
     
@@ -275,16 +275,15 @@ public class grupos {
     }
     
     public void readText(String text){
+        
         String[] datos = text.split("\n");
         grupo ant = null;
         for (int i = 0; i < datos.length; i++) {
-            System.out.println("creando: "+datos[i]);
             String [] separado = datos[i].split("\\:");
             if (separado.length != 3) continue;
-            System.out.println("creando: "+datos[i]);
             newgrupo(separado[0]);
             grupo nuevo = this.act;
-            System.out.println(separado[1]);
+            //System.out.println(separado[1]);
             nuevo.setSemestre(separado[1]);
             nuevo.getHor().readText(separado[2],nuevo.getList());
             

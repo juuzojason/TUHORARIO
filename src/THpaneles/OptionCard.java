@@ -24,6 +24,9 @@ public class OptionCard extends javax.swing.JPanel {
     private int[] He = {2,0,0};
     private int[] Hs = {5,0,0};
     private int[] day = {0,0,0};
+    private int[] md = {0,0,0};
+    private int[] mds = {0,0,0};
+    
     
     private int days = 3;
     
@@ -141,11 +144,12 @@ public class OptionCard extends javax.swing.JPanel {
         DAY3.add(sun2);
         sun2.setBounds(153, -26, 30, 80);
 
-        DATA2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        DATA2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         DATA2.setForeground(new java.awt.Color(102, 102, 102));
-        DATA2.setText("Jue   12 AM - 2 PM");
+        DATA2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DATA2.setText("Jue   12:00 AM - 2:00 PM");
         DAY3.add(DATA2);
-        DATA2.setBounds(16, 8, 130, 16);
+        DATA2.setBounds(13, 8, 140, 14);
 
         DAY2.setBackground(new java.awt.Color(255, 255, 255));
         DAY2.setLayout(null);
@@ -161,11 +165,12 @@ public class OptionCard extends javax.swing.JPanel {
         DAY2.add(sun1);
         sun1.setBounds(153, -26, 30, 80);
 
-        DATA1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        DATA1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         DATA1.setForeground(new java.awt.Color(102, 102, 102));
-        DATA1.setText("Jue   12 AM - 2 PM");
+        DATA1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DATA1.setText("Jue   12:00 AM - 2:00 PM");
         DAY2.add(DATA1);
-        DATA1.setBounds(16, 8, 130, 16);
+        DATA1.setBounds(13, 8, 140, 14);
 
         DAY1.setBackground(new java.awt.Color(245, 245, 245));
         DAY1.setLayout(null);
@@ -181,11 +186,12 @@ public class OptionCard extends javax.swing.JPanel {
         DAY1.add(sun);
         sun.setBounds(153, -26, 30, 80);
 
-        DATA.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 13)); // NOI18N
+        DATA.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 11)); // NOI18N
         DATA.setForeground(new java.awt.Color(102, 102, 102));
-        DATA.setText("Jue   12 AM - 2 PM");
+        DATA.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DATA.setText("Jue   12:00 AM - 2:00 PM");
         DAY1.add(DATA);
-        DATA.setBounds(16, 8, 130, 16);
+        DATA.setBounds(13, 8, 140, 14);
 
         javax.swing.GroupLayout DAYSLayout = new javax.swing.GroupLayout(DAYS);
         DAYS.setLayout(DAYSLayout);
@@ -264,6 +270,11 @@ public class OptionCard extends javax.swing.JPanel {
             this.sun.setLocation(130,this.sun.getY());
             this.sun1.setLocation(130,this.sun.getY());
             this.sun2.setLocation(130,this.sun.getY());
+            this.sun.setVisible(false);
+            this.sun1.setVisible(false);
+            this.sun2.setVisible(false);
+            
+            
             
             DAY1.setBackground(ventana.colores.EnPane);
             DAY2.setBackground(ventana.colores.EnPane);
@@ -285,6 +296,11 @@ public class OptionCard extends javax.swing.JPanel {
             this.sun.setLocation(153,this.sun.getY());
             this.sun1.setLocation(153,this.sun.getY());
             this.sun2.setLocation(153,this.sun.getY());
+            this.sun.setVisible(true);
+            this.sun1.setVisible(true);
+            this.sun2.setVisible(true);
+            
+            
             
             this.del.setEnabled(false);
             this.del.setVisible(false);
@@ -337,6 +353,8 @@ public class OptionCard extends javax.swing.JPanel {
             He[i] = thisOpcion.getHD()[i];
             Hs[i] = thisOpcion.getHDSS()[i];
             day[i] = thisOpcion.getDias()[i];
+            md[i] = thisOpcion.getMD()[i];
+            mds[i] = thisOpcion.getMDS()[i];
         }
         
         
@@ -347,9 +365,9 @@ public class OptionCard extends javax.swing.JPanel {
         diu2 = (diu2.charAt(0)+"").toUpperCase() + diu2.substring(1, diu2.length()).toLowerCase();
         diu3 = (diu3.charAt(0)+"").toUpperCase() + diu3.substring(1, diu3.length()).toLowerCase();
         
-        String dataone = diu1 + dia.convertirHora(He[0]).toUpperCase() +" - "+ dia.convertirHora(Hs[0]).toUpperCase();
-        String datatwo = diu2 + dia.convertirHora(He[1]).toUpperCase() +" - "+ dia.convertirHora(Hs[1]).toUpperCase();
-        String datathr = diu3 + dia.convertirHora(He[2]).toUpperCase() +" - "+ dia.convertirHora(Hs[2]).toUpperCase();
+        String dataone = diu1 + dia.convertirHora(He[0], md[0]).toUpperCase() +" - "+ dia.convertirHora(Hs[0], mds[0]).toUpperCase();
+        String datatwo = diu2 + dia.convertirHora(He[1], md[1]).toUpperCase() +" - "+ dia.convertirHora(Hs[1], mds[1]).toUpperCase();
+        String datathr = diu3 + dia.convertirHora(He[2], md[2]).toUpperCase() +" - "+ dia.convertirHora(Hs[2], mds[2]).toUpperCase();
         this.DATA.setText(dataone);
         this.DATA1.setText(datatwo);
         this.DATA2.setText(datathr);

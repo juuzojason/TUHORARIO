@@ -1107,7 +1107,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(90, 90, 90));
         jLabel4.setText("Posibles Horarios");
         view.add(jLabel4);
-        jLabel4.setBounds(70, 20, 313, 43);
+        jLabel4.setBounds(70, 20, 830, 43);
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(127, 127, 127));
@@ -1421,7 +1421,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         UpdateCursoCards();
         
-        System.out.println("Cantidad cartas " + curso.size());
     }
     
     
@@ -1449,7 +1448,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             });
         }
         this.grupo.clear();
-        System.out.println("CATAS GRUPO " + grupo);
         this.repaint();
     }
     //</editor-fold>
@@ -1511,7 +1509,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void RemoveCursocards(){
         
-        System.out.println("REMOVING");
         for (int i = 0; i < curso.size(); i++) {
             
             Component cruse = curso.get(i);
@@ -1529,7 +1526,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         this.repaint();
         revisarEmpties();
-        System.out.println("FINISHED");
     }
     //</editor-fold>
     
@@ -1624,43 +1620,48 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     //<editor-fold defaultstate="collapsed" desc="HORARIOOOOOOOOOO CAAAAAAAAAAAAAAAARDS">
-    private void HorarioCards(){
-        if (groupChosen == null) return;
+    private void HorarioCards() {
+        if (groupChosen == null) {
+            return;
+        }
         horario hor = this.groupChosen.getHor();
-        
+
         totalpages = 0;
         int step = 0;
         Hopcion actual = hor.getHhead();
-        System.out.println(actual);
-        while (actual != null){
+        while (actual != null) {
             
-            if (step%12 == 0) totalpages++;
+            if (step % 12 == 0) {
+                totalpages++;
+            }
             
             HorarioCard nuevo = new HorarioCard();
-            nuevo.setHorario(actual);
             nuevo.setVentana(this);
+            nuevo.setHorario(actual);
+            
+            
             nuevo.setSize(210, 102);
-            int uwu = 50*((int)(Math.floor(step/3))%2);
+            int uwu = 50 * ((int) (Math.floor(step / 3)) % 2);
 //            System.out.println(70 + (230*(step%3)) + uwu);
-            nuevo.setLocation(60 + (int)(900*Math.floor(step/12)) + (260*(step%3)) + uwu, 110 + (122 *((int)(Math.floor(step/3))%4) ));
-            nuevo.setPage((int)(Math.floor(step/12)));
-            nuevo.setLine(((int)(Math.floor(step/3))%4));
+            nuevo.setLocation(60 + (int) (900 * Math.floor(step / 12)) + (260 * (step % 3)) + uwu, 110 + (122 * ((int) (Math.floor(step / 3)) % 4)));
+            nuevo.setPage((int) (Math.floor(step / 12)));
+            nuevo.setLine(((int) (Math.floor(step / 3)) % 4));
             //if (step > 24) nuevo.setVisible(false);
+            
             
             
             Hopcions.add(nuevo);
             this.view.add(nuevo);
-            
+
             step++;
             actual = actual.sig;
         }
         view.revalidate();
         view.repaint();
         if (grupo.isEmpty()) {
-       Nhorarios.setVisible(true);
-        }else{
-            
-       Nhorarios.setVisible(false);
+            Nhorarios.setVisible(true);
+        } else {
+            Nhorarios.setVisible(false);
         }
     }
     
@@ -1685,7 +1686,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     private void moveAllHorarios(int dir){
-        System.out.println(Hopcions.size());
         for (int i = 0; i < Hopcions.size(); i++) {
             HorarioCard here = Hopcions.get(i);
             if (here.getPage() == Page || here.getPage() == Page - dir) {
@@ -1841,7 +1841,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         creada = new opcion(cursoChosen.ndias, false);
         
-        if (creada == null) return;
         
         for (int i = 0; i < cursoChosen.ndias; i++) {
             if (creada == null) return;
@@ -1857,10 +1856,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             repaint();
         }
         
-        if (creada.getDias().length != creada.ndias) return;
-        cursoChosen.getListaopc().nuevaopcion(creada);
+        
     }//GEN-LAST:event_add3ActionPerformed
-
+    
+    
+    public void CrearOpcion(){
+        if (creada.numdis != creada.ndias) {
+            System.out.println("NOUP NO SE PUEDE" + creada.numdis);
+            return;
+        }
+        cursoChosen.getListaopc().nuevaopcion(creada);
+        this.UpdateOpcionCards();
+    }
+    
+    
     private void back2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_back2ActionPerformed
         this.cursoChosen.getListaopc().Undo();
         
@@ -2045,12 +2054,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MieActionPerformed
 
     private void FiltMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FiltMouseClicked
+        
         Page = 0;
         if (Hmin.getText().equals(Hmax.getText()) && hormax.getValue() < hormin.getValue()) {
             hormin.setValue(hormax.getValue());
         }
         
-        if (groupChosen == null)return;
+        if (groupChosen == null){return;}
         this.setFiltros();
         groupChosen.getHora().generarH();
         RemoveHorariocards();
@@ -2064,7 +2074,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
         if (best != null) filts.remove(best);
         
-        if (groupChosen.getHor().best == null) return;
+        if (groupChosen.getHor().best == null) {return;}
         
         HorarioCard nuevo = new HorarioCard();
         nuevo.setHorario(groupChosen.getHor().best);
@@ -2075,6 +2085,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         filts.repaint();
         
         best = nuevo;
+        
     }//GEN-LAST:event_FiltMouseClicked
 
     private void FiltMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FiltMouseEntered
@@ -2155,6 +2166,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     public void setFiltros(){
+        
         if (groupChosen==null) return;
         horario  ho = groupChosen.getHora();
         
@@ -2170,7 +2182,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         boolean [] restin = {!Lun.isSelected(),!Mar.isSelected(), !Mie.isSelected(),!Jue.isSelected(),!Vie.isSelected(),!Sab.isSelected()};
         ho.setDiasrestrin(restin);
         
-        System.out.println(diasmax.getValue() + " | " + espmax.getValue() + " | " + diasmax.getValue() + " | " + ho.getHoramaxm() + " : " + ho.getHoraminm() +" :::" +  restin[0] + " " + restin[1] + " " + restin[2]+ " " + restin[3] + " " + restin[4] + " " + restin[5]);
+        //System.out.println(diasmax.getValue() + " | " + espmax.getValue() + " | " + diasmax.getValue() + " | " + ho.getHoramaxm() + " : " + ho.getHoraminm() +" :::" +  restin[0] + " " + restin[1] + " " + restin[2]+ " " + restin[3] + " " + restin[4] + " " + restin[5]);
 
     }
     
@@ -2281,6 +2293,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private custom.TextFieldd CODE;
     private javax.swing.JLabel Espacio1;

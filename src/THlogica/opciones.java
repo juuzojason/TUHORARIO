@@ -51,7 +51,7 @@ public class opciones {
         }
         
         newaction(actual,"deleted");
-        System.out.println("Opcion eliminada: " + actual.mostrar());
+        //System.out.println("Opcion eliminada: " + actual.mostrar());
         contaropciones();
     }
     
@@ -131,7 +131,6 @@ public class opciones {
         if (actacti.type.equals("added")){
             undodelete(actacti.oenvolved);
         } else{
-            System.out.println("ADIING");
             undonew(actacti.oenvolved);
         }
         if (actacti == headact){
@@ -195,17 +194,17 @@ public class opciones {
         contaropciones();
     }
     
-    public String ListaOpciones() { // CREA UNA LISTA DE OPCIONES PARA MOSTRAE
-        String Most = "";
-        int cont = 1;
-        opcion actual = cabeza;
-        while (actual != null) {
-            Most += cont + "  "+actual.mostrar() + "\n";
-            cont++;
-            actual = actual.sig;
-        }
-        return Most;
-    }
+//    public String ListaOpciones() { // CREA UNA LISTA DE OPCIONES PARA MOSTRAE
+//        String Most = "";
+//        int cont = 1;
+//        opcion actual = cabeza;
+//        while (actual != null) {
+//            Most += cont + "  "+actual.mostrar() + "\n";
+//            cont++;
+//            actual = actual.sig;
+//        }
+//        return Most;
+//    }
 
     public String encript() { //ENCRIPTA LAS OPCIONES QUE EXISTEN
         String code = "[";
@@ -215,7 +214,7 @@ public class opciones {
             actu = actu.sig;
         }
         code += "]";
-        System.out.println(code);
+        //System.out.println(code);
         return code;
     }
 
@@ -226,7 +225,7 @@ public class opciones {
         String regex = "\\[(.)\\]";
         String[] subcadenas = code.split(regex);
         subcadenas[0] = subcadenas[0].substring(1, subcadenas[0].length() - 1);
-
+        
         if (subcadenas.length != 1) {
             return false;
         }
@@ -255,7 +254,7 @@ public class opciones {
         String[] componentes = code.split("\\.");
 
         if (componentes.length < 1) {
-            System.out.println("NO SE ENCONTRO OPCIONES");
+            //System.out.println("NO SE ENCONTRO OPCIONES");
             return false;
         }
 
@@ -270,12 +269,16 @@ public class opciones {
         String[] componentes = code.split("\\,");
         if (componentes.length != ndias) {
            
-            System.out.println(componentes.length + "   Numero de opciones no valida:  " + ndias);
+            //System.out.println(componentes.length + "   Numero de opciones no valida:  " + ndias);
             return false;
         }
-
+        
+        
         opcion nu = nuevaopcion(false);
-
+        
+        opcion actual = cabeza;
+        
+        
         for (int i = 0; i < componentes.length; i++) {
             DNCsingle(componentes[i], nu);
         }
@@ -284,14 +287,17 @@ public class opciones {
     }
 
     private boolean DNCsingle(String code, opcion nueva) { //    abc   |   DESENCRIPTA FINALMENTE TODO
-
+        
         try {
             int num1 = (int) (code.charAt(0)) - 97;
             int num2 = (int) (code.charAt(1)) - 97;
-            int num3 = (int) (code.charAt(2)) - 97;
-
+            int min1 = Integer.parseInt(code.charAt(2) +""+ code.charAt(3));
+            int num3 = (int) (code.charAt(4)) - 97;
+            int min2 = Integer.parseInt(code.charAt(5) +""+ code.charAt(6));
+            
+            
             //System.out.println(num1+" "+num2+" "+num3);
-            return (nueva.creardia(num1, num2, num3));
+            return (nueva.creardia(num1, num2, num3, min1, min2));
 
         } catch (NumberFormatException e) {
             return false;

@@ -155,21 +155,25 @@ public class HorarioCurso extends javax.swing.JPanel {
     private void actComponents(){
         if (DIA== null) return;
         
-        bg.setBounds(0,0,120, 30*DIA.Hcant());
-        //System.out.println("ALTU " +  bg.getHeight());
+        int length = (int)Math.round(30*DIA.Hcant());
+        int entrada = (int)Math.round(30*(DIA.getHd()+DIA.getMd()/60.0));
+        System.out.println(length);
+        
+        bg.setBounds(0,0,120, length);
+        
         this.revalidate();
         this.repaint();
         bg.revalidate();
         bg.repaint();
         
-        if (DIA.Hcant() == 1) {
+        if (DIA.Hcant() <= 1) {
             franja.setBounds(0, 20, 120, 10);
             Nombre.setBounds(0,0,120,20);
         } else{
-            franja.setBounds(0, 30*DIA.Hcant()   -20, 120, 20);
-            Nombre.setBounds(0,0,120, 30*DIA.Hcant()   -20);
+            franja.setBounds(0, length  -20, 120, 20);
+            Nombre.setBounds(0,0,120, length   -20);
         }
-        
+        System.out.println("ALTU " +  franja.getY());
         revalidate();
         this.repaint();
     }

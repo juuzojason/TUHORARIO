@@ -11,9 +11,11 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
+import java.awt.Toolkit;
 import java.awt.geom.Area;
 import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
@@ -41,21 +43,53 @@ public class HorarioCard extends javax.swing.JPanel {
     public void setHorario(Hopcion horario) {
         this.horario = horario;
         this.Days.setText(horario.getDiastogo()+"");
-        this.Hmax.setText(dia.convertirHora(horario.getHMAX()));
-        this.Hmin.setText(dia.convertirHora(horario.getHMIN()));
+        
+        this.Hmax.setText(dia.convertirHora(horario.getHMAX(), 0));
+        this.Hmin.setText(dia.convertirHora(horario.getHMIN(),0));
         this.VoidHours.setText(horario.getHuecos()+"");
         setDiasIcon(horario.getDiastogo());
         
         
+        
         this.sun2.setForeground(OptionCard.Hourcolor(horario.getHMIN()));
         this.sun1.setForeground(OptionCard.Hourcolor(horario.getHMAX()));
+        
     }
     
     
     private void setDiasIcon(int dias){
-        String ruta = "/THImages/CirclesFilled/Circle"+ dias + ".png";
+        String ruta = "/THimages/CirclesFilled/Circle" + dias + ".png";
+        this.Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
         
-        this.Days.setIcon(new ImageIcon(getClass().getResource(ruta)));
+        //ventana.getjLabel4().setText("/THImages/CirclesFilled/Circle"+ dias + ".png");
+//       String ruta;       
+//        switch (dias) {
+//            case 1:
+//                ruta = "/THimages/CirclesFilled/Circle1.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//            case 2:
+//                ruta = "/THImages/CirclesFilled/Circle2.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//            case 3:
+//                ruta = "/THImages/CirclesFilled/Circle3.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//            case 4:
+//                ruta = "/THImages/CirclesFilled/Circle4.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//            case 5:
+//                ruta = "/THImages/CirclesFilled/Circle5.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//            case 6:
+//                ruta = "/THImages/CirclesFilled/Circle6.png";
+//                Days.setIcon(new javax.swing.ImageIcon(getClass().getResource(ruta)));
+//                break;
+//        }
+//        
     }
     
     
@@ -142,7 +176,7 @@ public class HorarioCard extends javax.swing.JPanel {
             }
         });
         bg.add(sun1);
-        sun1.setBounds(130, 60, 30, 40);
+        sun1.setBounds(160, 60, 30, 40);
 
         Days.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         Days.setForeground(new java.awt.Color(255, 255, 255));
@@ -163,7 +197,7 @@ public class HorarioCard extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setText("H Max.");
         bg.add(jLabel2);
-        jLabel2.setBounds(30, 75, 70, 15);
+        jLabel2.setBounds(20, 75, 70, 15);
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(204, 204, 204));
@@ -174,9 +208,9 @@ public class HorarioCard extends javax.swing.JPanel {
         Hmax.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         Hmax.setForeground(new java.awt.Color(102, 102, 102));
         Hmax.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Hmax.setText("5 PM");
+        Hmax.setText("5:00 PM");
         bg.add(Hmax);
-        Hmax.setBounds(70, 70, 60, 20);
+        Hmax.setBounds(60, 70, 100, 20);
 
         sun2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 75)); // NOI18N
         sun2.setForeground(new java.awt.Color(47, 85, 151));
@@ -188,20 +222,20 @@ public class HorarioCard extends javax.swing.JPanel {
             }
         });
         bg.add(sun2);
-        sun2.setBounds(130, 35, 30, 40);
+        sun2.setBounds(160, 35, 30, 40);
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
         jLabel5.setText("H Min.");
         bg.add(jLabel5);
-        jLabel5.setBounds(30, 55, 70, 15);
+        jLabel5.setBounds(20, 55, 70, 15);
 
         Hmin.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 18)); // NOI18N
         Hmin.setForeground(new java.awt.Color(102, 102, 102));
         Hmin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Hmin.setText("9 PM");
+        Hmin.setText("9:00 PM");
         bg.add(Hmin);
-        Hmin.setBounds(70, 50, 60, 20);
+        Hmin.setBounds(60, 50, 100, 20);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

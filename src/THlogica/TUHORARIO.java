@@ -4,14 +4,13 @@ import javax.swing.JOptionPane;
 
 public class TUHORARIO {
     
-    public static void main(String[] args) {
+    public void mainns() {
         
         
         // Mk EL QUE LO LEA JUJUJUJUJUJUJUJUJUJUJUJUJUJU
         
         
         grupos grupos = new grupos();
-        grupos.ReadGrupos();
         int opcion = 0;
         do {
             String[] opciones = {"1 Entrar a grupo","2. Crear grupo","3. Eliminar grupo"};

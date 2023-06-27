@@ -56,9 +56,13 @@ public class CrearOpc extends javax.swing.JPanel {
         BTSALI = new custom.MyButton();
         BTENTRA = new custom.MyButton();
         comboEstudio2 = new javax.swing.JComboBox<>();
-        HENTRA = new custom.MySpinner();
         HSALI = new custom.MySpinner();
         ELDIA = new custom.MySpinnerDia();
+        HENTRA = new custom.MySpinner();
+        Cancelar1 = new javax.swing.JLabel();
+        Cancelar2 = new javax.swing.JLabel();
+        mds = new custom.TextFieldd();
+        md = new custom.TextFieldd();
 
         setBackground(new java.awt.Color(176, 235, 176));
         setOpaque(false);
@@ -96,12 +100,13 @@ public class CrearOpc extends javax.swing.JPanel {
 
         jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 340, 10));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 350, 10));
 
         Cancelar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         Cancelar.setForeground(new java.awt.Color(255, 255, 255));
-        Cancelar.setText("Entrada");
-        bg.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, -1));
+        Cancelar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Cancelar.setText(":");
+        bg.add(Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 150, 10, -1));
 
         cancelar.setBackground(new java.awt.Color(141, 196, 162));
         cancelar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
@@ -133,7 +138,7 @@ public class CrearOpc extends javax.swing.JPanel {
                 guardarActionPerformed(evt);
             }
         });
-        bg.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, -1, -1));
+        bg.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
 
         BTSALI.setBackground(new java.awt.Color(101, 163, 130));
         BTSALI.setBorder(null);
@@ -152,7 +157,7 @@ public class CrearOpc extends javax.swing.JPanel {
                 BTSALIActionPerformed(evt);
             }
         });
-        bg.add(BTSALI, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, 60, 20));
+        bg.add(BTSALI, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 60, 20));
 
         BTENTRA.setBackground(new java.awt.Color(153, 195, 172));
         BTENTRA.setBorder(null);
@@ -171,30 +176,11 @@ public class CrearOpc extends javax.swing.JPanel {
                 BTENTRAActionPerformed(evt);
             }
         });
-        bg.add(BTENTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, 60, 20));
+        bg.add(BTENTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, 60, 20));
 
         comboEstudio2.setFont(new java.awt.Font("Arial Rounded MT Bold", 2, 18)); // NOI18N
         comboEstudio2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "Primaria", "Bachiller", "Técnico", "Pregrado", "Especialista", "Magister", "Doctorado" }));
         bg.add(comboEstudio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 180, -1));
-
-        HENTRA.setForeground(new java.awt.Color(127, 127, 127));
-        HENTRA.setBtnBack(new java.awt.Color(153, 195, 172));
-        HENTRA.setMinVal(6);
-        HENTRA.setTxtFore(new java.awt.Color(102, 102, 102));
-        HENTRA.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                HENTRAMouseEntered(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                HENTRAMousePressed(evt);
-            }
-        });
-        HENTRA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                HENTRAPropertyChange(evt);
-            }
-        });
-        bg.add(HENTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
 
         HSALI.setForeground(new java.awt.Color(127, 127, 127));
         HSALI.setBtnBack(new java.awt.Color(153, 195, 172));
@@ -217,15 +203,67 @@ public class CrearOpc extends javax.swing.JPanel {
 
         ELDIA.setForeground(new java.awt.Color(127, 127, 127));
         ELDIA.setBtnBack(new java.awt.Color(153, 195, 172));
+        ELDIA.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         ELDIA.setTxtBack(new java.awt.Color(204, 255, 204));
         ELDIA.setTxtFore(new java.awt.Color(102, 102, 102));
-        bg.add(ELDIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 160, -1));
+        bg.add(ELDIA, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 160, -1));
+
+        HENTRA.setForeground(new java.awt.Color(127, 127, 127));
+        HENTRA.setBtnBack(new java.awt.Color(153, 195, 172));
+        HENTRA.setMinVal(6);
+        HENTRA.setTxtFore(new java.awt.Color(102, 102, 102));
+        HENTRA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                HENTRAMouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                HENTRAMousePressed(evt);
+            }
+        });
+        HENTRA.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                HENTRAPropertyChange(evt);
+            }
+        });
+        bg.add(HENTRA, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, -1, -1));
+
+        Cancelar1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        Cancelar1.setForeground(new java.awt.Color(255, 255, 255));
+        Cancelar1.setText("Entrada");
+        bg.add(Cancelar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 70, -1));
+
+        Cancelar2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
+        Cancelar2.setForeground(new java.awt.Color(255, 255, 255));
+        Cancelar2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Cancelar2.setText(":");
+        bg.add(Cancelar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, 10, -1));
+
+        mds.setBorder(null);
+        mds.setForeground(new java.awt.Color(102, 102, 102));
+        mds.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        mds.setText("00");
+        mds.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        bg.add(mds, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 50, 20));
+
+        md.setBorder(null);
+        md.setForeground(new java.awt.Color(102, 102, 102));
+        md.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        md.setText("00");
+        md.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        md.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mdActionPerformed(evt);
+            }
+        });
+        bg.add(md, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 50, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 386, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(bg, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,13 +277,15 @@ public class CrearOpc extends javax.swing.JPanel {
        int enplus = (BTENTRA.getText().equals("PM"))?12:0;
        int saplus = (BTSALI.getText().equals("PM"))?12:0;
        
-        if (!padre.creada.creardia(ELDIA.getValue(), HENTRA.getValue()+enplus, HSALI.getValue()+saplus)) {
+        if (!padre.creada.creardia(ELDIA.getValue(), HENTRA.getValue()+enplus, HSALI.getValue()+saplus, Integer.parseInt(md.getText()), Integer.parseInt(mds.getText()))) {
+            
             return;
         }
 
-       
-       padre.UpdateOpcionCards(); 
-       GlassPanePopup.closePopupAll(); 
+       GlassPanePopup.closePopupLast();
+        if (padre.creada.ndias == padre.creada.numdis) {
+            padre.CrearOpcion();
+        }
     }//GEN-LAST:event_guardarActionPerformed
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
@@ -296,10 +336,6 @@ public class CrearOpc extends javax.swing.JPanel {
         if (padre.creada == null) salir();
     }//GEN-LAST:event_bgMouseExited
 
-    private void HENTRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HENTRAPropertyChange
-
-    }//GEN-LAST:event_HENTRAPropertyChange
-
     private void HSALIPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HSALIPropertyChange
 
     }//GEN-LAST:event_HSALIPropertyChange
@@ -323,17 +359,25 @@ public class CrearOpc extends javax.swing.JPanel {
         
     }//GEN-LAST:event_HSALIMouseClicked
 
-    private void HENTRAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMousePressed
-
-    }//GEN-LAST:event_HENTRAMousePressed
-
-    private void HENTRAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMouseEntered
-
-    }//GEN-LAST:event_HENTRAMouseEntered
-
     private void HSALIMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HSALIMouseEntered
 
     }//GEN-LAST:event_HSALIMouseEntered
+
+    private void HENTRAMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HENTRAMouseEntered
+
+    private void HENTRAMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HENTRAMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HENTRAMousePressed
+
+    private void HENTRAPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_HENTRAPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HENTRAPropertyChange
+
+    private void mdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mdActionPerformed
     
     
     public void cmbiarM(custom.MyButton boton){
@@ -429,6 +473,8 @@ public class CrearOpc extends javax.swing.JPanel {
     private custom.MyButton BTENTRA;
     private custom.MyButton BTSALI;
     private javax.swing.JLabel Cancelar;
+    private javax.swing.JLabel Cancelar1;
+    private javax.swing.JLabel Cancelar2;
     private javax.swing.JLabel Dia;
     private custom.MySpinnerDia ELDIA;
     private custom.MySpinner HENTRA;
@@ -440,5 +486,7 @@ public class CrearOpc extends javax.swing.JPanel {
     private javax.swing.JLabel creandog;
     private javax.swing.JButton guardar;
     private javax.swing.JSeparator jSeparator1;
+    private custom.TextFieldd md;
+    private custom.TextFieldd mds;
     // End of variables declaration//GEN-END:variables
 }

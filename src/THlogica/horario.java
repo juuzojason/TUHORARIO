@@ -37,7 +37,8 @@ public class horario extends Listacursos {
         while (actual != null && actual.chosenone != ths) {
             dia thisdia = ths.act;
             while (thisdia != null) {
-                if (actual.chosenone != null && actual.chosenone.checkoverlap(thisdia.getDia(), thisdia.getHd(), thisdia.getHds())) {
+                if (actual.chosenone != null && actual.chosenone.checkoverlap(thisdia.getDia(), thisdia.getHd(), thisdia.getHds(), thisdia.getMd(), thisdia.getMds())) {
+                    
                     return true;
                 }
                 thisdia = thisdia.ant;
@@ -231,7 +232,6 @@ public class horario extends Listacursos {
         for (int i = 0; i <= vect.length; i++) {
             if (cursoac != null) {
                 cursoac.choose(vect[i]);
-                System.out.println(cursoac.getChosenone());
                 cursoac = cursoac.sig;
             }
         }
@@ -276,7 +276,7 @@ public class horario extends Listacursos {
 
     private String mostrarHopc(Hopcion Hori) { //Mostrar opcion escogida
         String show = "";
-        show += Hori.getDiastogo() + " Dias  |                               " + Hori.getHuecos() + " horas con hueco |\n   | Entrada MIN: " + dia.convertirHora(Hori.getHMIN()) + "               Salida MAX: " + dia.convertirHora(Hori.getHMAX());
+        //show += Hori.getDiastogo() + " Dias  |                               " + Hori.getHuecos() + " horas con hueco |\n   | Entrada MIN: " + dia.convertirHora(Hori.getHMIN()) + "               Salida MAX: " + dia.convertirHora(Hori.getHMAX());
         show += " |\n   |---------------------------------------------------------------|";
         return show;
     }
@@ -364,44 +364,46 @@ public class horario extends Listacursos {
      
     }
 
-    public void filt() {
-        int filtro;
-        do {
-
-            String filtroo = JOptionPane.showInputDialog(null,"Ingrese su opción: \n1. Hora Máxima          " + convertirHora(getHoramaxm())
-                    + " \n2. Hora Mínima             " + convertirHora(getHoraminm()) + " \n3. Huec.Máximo           " + getHuecomax() + " horas \n4. Dias Máximos       "
-                    + "   " + getDiasmax() + " \n5. Dias Restringidos  \n6. Limpiar \n\n. Digite una de las opciones", "FILTRAR LOS HORARIOS",JOptionPane.PLAIN_MESSAGE);
-            if (filtroo == null) return;
-            filtro = Integer.parseInt(filtroo);
-            switch (filtro) {
-                case 1:
-                    ehoramax();
-                    break;
-                case 2:
-                    ehoramin();
-                    break;
-                case 3:
-                    ehuecosmax();
-                    break;
-                case 4:
-                    ediasmax();
-                    break;
-                case 5:
-                    diarest();
-                    break;
-                case 6:
-                    Limpiarfilt();
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Opcion invalida, intentelo de nuevo", "ERROR", JOptionPane.ERROR_MESSAGE);
-                    break;
-            }
-
-        } while (true);
-    }
+//    public void filt() {
+//        int filtro;
+//        do {
+//
+//            String filtroo = JOptionPane.showInputDialog(null,"Ingrese su opción: \n1. Hora Máxima          " + convertirHora(getHoramaxm())
+//                    + " \n2. Hora Mínima             " + convertirHora(getHoraminm()) + " \n3. Huec.Máximo           " + getHuecomax() + " horas \n4. Dias Máximos       "
+//                    + "   " + getDiasmax() + " \n5. Dias Restringidos  \n6. Limpiar \n\n. Digite una de las opciones", "FILTRAR LOS HORARIOS",JOptionPane.PLAIN_MESSAGE);
+//            if (filtroo == null) return;
+//            filtro = Integer.parseInt(filtroo);
+//            switch (filtro) {
+//                case 1:
+//                    ehoramax();
+//                    break;
+//                case 2:
+//                    ehoramin();
+//                    break;
+//                case 3:
+//                    ehuecosmax();
+//                    break;
+//                case 4:
+//                    ediasmax();
+//                    break;
+//                case 5:
+//                    diarest();
+//                    break;
+//                case 6:
+//                    Limpiarfilt();
+//                    break;
+//                default:
+//                    JOptionPane.showMessageDialog(null, "Opcion invalida, intentelo de nuevo", "ERROR", JOptionPane.ERROR_MESSAGE);
+//                    break;
+//            }
+//
+//        } while (true);
+//    }
     
     
     private void permutate(curso cursoact) {
+        
+        if (cursoact != null) System.out.println("NOMBRE CURSOOOO  "+cursoact.getNombre());
         
         if (cursoact == null) {
             cursoact = cabeza;
@@ -411,7 +413,8 @@ public class horario extends Listacursos {
             int horasmax = loscursos.maxhour();
             int horasmin = loscursos.minhour();
             int huecosd = huecosdelhorario();
-            if (diastogo <= diasmax) //System.out.println((loscursos.maxhour()<= horamaxm) +""+ (loscursos.minhour() >= horaminm) + "  -  "+loscursos.maxhour()+"    "+loscursos.minhour());
+            //System.out.println((loscursos.maxhour()<= horamaxm) +""+ (loscursos.minhour() >= horaminm) + "  -  "+loscursos.maxhour()+"    "+loscursos.minhour());
+            if (diastogo <= diasmax) 
             {   
                 //System.out.println(horamaxm);
                 //System.out.println((diastogo <= diasmax) +" " + (horasmax <= horamaxm) + " "  + (horasmin >= horaminm) + " " + ( huecosd <= huecomax) + " " + (checkdias()));
@@ -430,11 +433,13 @@ public class horario extends Listacursos {
         opcion opcact = cursoact.listaopc.cabeza;
         //JOptionPane.showMessageDialog(null, opcact.mostrar());
         while (opcact != null) {
-            //System.out.println(cursoact.nombre);
+            
+            cursoact.chosenone = null;
             if (!overlapopcions(opcact)) {
                 cursoact.chosenone = opcact;
                 permutate(cursoact);
             }
+            System.out.println("opciones UUUU");
             opcact = opcact.sig;
         }
         cursoact.chosenone = null;
@@ -460,7 +465,6 @@ public class horario extends Listacursos {
             if (datos[i].length() == 0) {
                 continue;
             }
-            curso nuevo2 = new curso(datos[i]);
             String [] partes = datos[i].split("\\<");
             if (partes.length != 3){
                 //System.out.println(partes.length);

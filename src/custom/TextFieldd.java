@@ -40,11 +40,21 @@ public class TextFieldd extends JTextField {
         repaint();
     }
 
+    
+    
+    
+    
+    
     private int round = 10;
     private Color shadowColor = new Color(170, 170, 170);
     private BufferedImage imageShadow;
     private final Insets shadowSize = new Insets(0, 0, 0, 0);
-
+   
+    
+    
+    
+    
+    
     public TextFieldd() {
         setUI(new TextUI());
         setOpaque(false);
@@ -53,6 +63,7 @@ public class TextFieldd extends JTextField {
         setSelectionColor(new Color(133, 209, 255));
         setBorder(new EmptyBorder(12, 12, 12, 12));
         setBackground(new Color(255, 255, 255));
+        
     }
 
     @Override

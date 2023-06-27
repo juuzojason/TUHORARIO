@@ -4,7 +4,8 @@ import javax.swing.JOptionPane;
 
 public class opcion {
     // ID DE LA OPCION
-
+    
+    public int numdis  =0;
     public int ndias;
     dia act;
 
@@ -22,7 +23,6 @@ public class opcion {
     private void init() {
         for (int i = 0; i < ndias; i++) {
             nuevodia();
-            System.out.println("TIMES");
         }
     }
 
@@ -78,10 +78,11 @@ public class opcion {
             hor2 = pedirHora("Ingrese hora de salida valida");
         }
 
-        creardia(day, hor, hor2);
+        //creardia(day, hor, hor2);
+        
     }
 
-    public boolean creardia(int day, int hd, int hds) {
+    public boolean creardia(int day, int hd, int hds, int md, int mds) {
         if (!goodia(day)) {
             System.out.println("DIA NO EXISTE");
             return false;
@@ -90,12 +91,12 @@ public class opcion {
             System.out.println("HORA NO SE PUEDE");
             return false;
         }
-        if (hd > hds) {
+        if (hd + md/60.0 > hds+ mds/60.0) {
             System.out.println("INCONSISTENCIA DE HORAS");
             return false;
         }
 
-        dia nuevo = new dia(day, hd, hds);
+        dia nuevo = new dia(day, hd, hds, md, mds);
 
         if (act != null) {
             nuevo.ant = act;
@@ -104,24 +105,24 @@ public class opcion {
         } else {
             act = nuevo;
         }
+        numdis++;
         return true;
     }
 
-    public String mostrar() {   
-        String Most = "";
-        dia actual = act;
-        while (actual != null) {
-            Most += actual.nombreDia(actual.getDia());
-            Most += " → ";
-            Most += actual.convertirHora(actual.getHd());
-            Most += " - ";
-            Most += actual.convertirHora(actual.getHds());
-            Most += (actual.ant != null) ? "\n" : " \n-------------------------------------------";
-            System.out.println("");
-            actual = actual.ant;
-        }
-        return Most;
-    }
+//    public String mostrar() {   
+//        String Most = "";
+//        dia actual = act;
+//        while (actual != null) {
+//            Most += actual.nombreDia(actual.getDia());
+//            Most += " → ";
+//            Most += actual.convertirHora(actual.getHd());
+//            Most += " - ";
+//            Most += actual.convertirHora(actual.getHds());
+//            Most += (actual.ant != null) ? "\n" : " \n-------------------------------------------";
+//            actual = actual.ant;
+//        }
+//        return Most;
+//    }
     
     public int[] getDias(){
         int[] diass = new int [3];
@@ -159,7 +160,31 @@ public class opcion {
         }
         return diass;
     }
-
+    
+    public int[] getMD(){
+        int[] diass = new int [3];
+        int cont = 0;
+        dia actu = act;
+        while (actu != null) {
+            diass[cont] = actu.getMd();
+            cont++;
+            actu = actu.ant;
+        }
+        return diass;
+    }
+    
+    public int[] getMDS(){
+        int[] diass = new int [3];
+        int cont = 0;
+        dia actu = act;
+        while (actu != null) {
+            diass[cont] = actu.getMds();
+            cont++;
+            actu = actu.ant;
+        }
+        return diass;
+    }
+    
     public opcion getSig() {
         return sig;
     }
@@ -176,10 +201,10 @@ public class opcion {
     
     
     //DETECTA SI LA HORA DADA SE CRUZA CON ALGUN DÍA
-    public boolean checkoverlap(int day, int start, int end) {
+    public boolean checkoverlap(int day, int start, int end, int mst, int mend) {
         dia actu = act;
         while (actu != null) {
-            if (actu.cruza(day, start, end)) {
+            if (actu.cruza(day, start, end, mst, mend)) {
                 return true;
             } else {
                 actu = actu.ant;
@@ -213,7 +238,7 @@ public class opcion {
         int hrmn = 25;
         dia actu = act;
         while (actu != null) {
-            if (actu.getHd() < hrmn) {
+            if (actu.getHd() + actu.getMd()/60.0  < hrmn) {
                 hrmn = actu.getHd();
             }
             actu = actu.ant;
@@ -225,7 +250,7 @@ public class opcion {
         int hrmx = 0;
         dia actu = act;
         while (actu != null) {
-            if (actu.getHds() > hrmx) {
+            if (actu.getHds() + actu.getMds()/60.0 > hrmx) {
                 hrmx = actu.getHds();
             }
             actu = actu.ant;

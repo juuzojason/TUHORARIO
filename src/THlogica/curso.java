@@ -80,13 +80,13 @@ public class curso {
         
     }
 
-    public void mostrarcurso() {
-        String titulo = nombre;
-        String opciones = listaopc.ListaOpciones();
-
-        JOptionPane.showMessageDialog(null, opciones, "===" + titulo + "===", JOptionPane.PLAIN_MESSAGE);
-
-    }
+//    public void mostrarcurso() {
+//        String titulo = nombre;
+//        String opciones = listaopc.ListaOpciones();
+//
+//        JOptionPane.showMessageDialog(null, opciones, "===" + titulo + "===", JOptionPane.PLAIN_MESSAGE);
+//
+//    }
      public String toText(){
         String text = "";
         text += this.nombre+"<";
