@@ -7,6 +7,7 @@ package THpaneles;
 import THVentanas.VentanaPrincipal;
 import THlogica.Hopcion;
 import THlogica.dia;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -49,6 +50,14 @@ public class HorarioCard extends javax.swing.JPanel {
         this.VoidHours.setText(horario.getHuecos()+"");
         setDiasIcon(horario.getDiastogo());
         
+        
+        Color c = Color.GREEN;
+        for (int i = 0; i < 3-horario.favorite; i++) {
+            c=c.brighter();
+        }
+        
+        this.Favourite.setBackground(Color.GREEN);
+        if (horario.favorite == 0) this.Favourite.setBackground(Color.white);
         
         
         this.sun2.setForeground(OptionCard.Hourcolor(horario.getHMIN()));
@@ -144,6 +153,7 @@ public class HorarioCard extends javax.swing.JPanel {
         sun2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         Hmin = new javax.swing.JLabel();
+        Favourite = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setOpaque(false);
@@ -236,6 +246,22 @@ public class HorarioCard extends javax.swing.JPanel {
         Hmin.setText("9:00 PM");
         bg.add(Hmin);
         Hmin.setBounds(60, 50, 100, 20);
+
+        Favourite.setBackground(new java.awt.Color(0, 204, 102));
+
+        javax.swing.GroupLayout FavouriteLayout = new javax.swing.GroupLayout(Favourite);
+        Favourite.setLayout(FavouriteLayout);
+        FavouriteLayout.setHorizontalGroup(
+            FavouriteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 10, Short.MAX_VALUE)
+        );
+        FavouriteLayout.setVerticalGroup(
+            FavouriteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+
+        bg.add(Favourite);
+        Favourite.setBounds(0, 0, 10, 100);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -344,6 +370,7 @@ public class HorarioCard extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Days;
+    private javax.swing.JPanel Favourite;
     private javax.swing.JLabel Hmax;
     private javax.swing.JLabel Hmin;
     private javax.swing.JLabel VoidHours;

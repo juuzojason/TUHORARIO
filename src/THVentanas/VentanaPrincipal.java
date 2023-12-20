@@ -1846,6 +1846,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if (creada == null) return;
             
             CrearOpc nuevo = new CrearOpc();
+            
             nuevo.variable = this.cursoChosen.getListaopc();
             nuevo.setSize(400, 300);
             nuevo.setPadre(this);
@@ -1854,6 +1855,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
             nuevo.repaint();
             repaint();
+            
+            if (i == cursoChosen.ndias - 1) nuevo.visiblelabel();
         }
         
         
@@ -1865,6 +1868,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             System.out.println("NOUP NO SE PUEDE" + creada.numdis);
             return;
         }
+        
         cursoChosen.getListaopc().nuevaopcion(creada);
         this.UpdateOpcionCards();
     }

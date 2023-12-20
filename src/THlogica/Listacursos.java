@@ -390,7 +390,22 @@ public class Listacursos {
         }
         return text;
     }
+     
+    public int favoriteOpcions(){
+        int c = 0;
+        curso actual = cabeza;
+        opcion opci = (actual != null) ? actual.chosenone : null;
+        while (actual != null) {
+            if (opci == null) continue;
+            
+            if (opci.IsFavorite()) c++;
 
+            actual = actual.sig;
+            opci = (actual != null) ? actual.chosenone : null;;
+        }
+        return c;
+    } 
+    
     public int getNcursos() {
         return ncursos;
     }

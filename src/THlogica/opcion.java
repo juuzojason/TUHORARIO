@@ -5,8 +5,9 @@ import javax.swing.JOptionPane;
 public class opcion {
     // ID DE LA OPCION
     
-    public int numdis  =0;
+    public int numdis = 0;
     public int ndias;
+    public String label = "none";
     dia act;
 
     opcion sig;
@@ -220,7 +221,7 @@ public class opcion {
             code += actu.encript() + ",";
             actu = actu.ant;
         }
-        code += ".";
+        code += label+",.";
         return code;
     }
 
@@ -257,5 +258,11 @@ public class opcion {
         }
         return hrmx;
     }
+    
+    public boolean IsFavorite(){
+        if (!label.equals("none")) System.out.println("Favorite");
+        return !label.equalsIgnoreCase("none");
+    }
+    
 
 }

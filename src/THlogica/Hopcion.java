@@ -9,15 +9,18 @@ public class Hopcion {
     private int huecos;
     private double Score;
     
+    
+    public int favorite = 0;
     public Hopcion sig;
     public Hopcion ant;
 
-    public Hopcion(String horario, int diastogo, int HMAX, int HMIN, int huecos) {
+    public Hopcion(String horario, int diastogo, int HMAX, int HMIN, int huecos, int favorite) {
         this.horario = horario;
         this.diastogo = diastogo;
         this.HMAX = HMAX;
         this.HMIN = HMIN;
         this.huecos = huecos;
+        this.favorite = favorite;
         calculateScore();
         //System.out.println(horario);
     }

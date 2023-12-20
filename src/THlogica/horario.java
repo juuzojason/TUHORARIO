@@ -120,7 +120,7 @@ public class horario extends Listacursos {
         hact = null;
     }
 
-    private void nuevoHorario(int diastogo, int HMAX, int HMIN, int huecos) {
+    private void nuevoHorario(int diastogo, int HMAX, int HMIN, int huecos, int favorite) {
         String code = "";
         curso actual = cabeza;
         while (actual != null) {
@@ -132,7 +132,7 @@ public class horario extends Listacursos {
             return;
         }
 
-        Hopcion nuevo = new Hopcion(code, diastogo, HMAX, HMIN, huecos);
+        Hopcion nuevo = new Hopcion(code, diastogo, HMAX, HMIN, huecos, favorite);
         if (hhead == null) {
             hhead = nuevo;
             hact = nuevo;
@@ -421,7 +421,7 @@ public class horario extends Listacursos {
                 
 
                 if (diastogo <= diasmax && horasmax <= horamaxm && horasmin >= horaminm && huecosd <= huecomax && checkdias()) {
-                    nuevoHorario(diastogo, horasmax, horasmin, huecosd);
+                    nuevoHorario(diastogo, horasmax, horasmin, huecosd, loscursos.favoriteOpcions());
                     cont++;
                 }
             }

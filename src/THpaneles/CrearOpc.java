@@ -22,6 +22,7 @@ public class CrearOpc extends javax.swing.JPanel {
     private int round = 25;
     public opciones variable;
     public VentanaPrincipal padre;
+    private boolean LABEL = false;
     public CrearOpc() {
         initComponents();
         
@@ -62,6 +63,7 @@ public class CrearOpc extends javax.swing.JPanel {
         Cancelar1 = new javax.swing.JLabel();
         Cancelar2 = new javax.swing.JLabel();
         mds = new custom.TextFieldd();
+        label = new custom.TextFieldd();
         md = new custom.TextFieldd();
 
         setBackground(new java.awt.Color(176, 235, 176));
@@ -86,7 +88,7 @@ public class CrearOpc extends javax.swing.JPanel {
         creandog.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 17)); // NOI18N
         creandog.setForeground(new java.awt.Color(255, 255, 255));
         creandog.setText("CREANDO OPCION");
-        bg.add(creandog, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 10, 190, -1));
+        bg.add(creandog, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 190, -1));
 
         Dia.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 16)); // NOI18N
         Dia.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,7 +124,7 @@ public class CrearOpc extends javax.swing.JPanel {
                 cancelarActionPerformed(evt);
             }
         });
-        bg.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, 30));
+        bg.add(cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, 30));
 
         guardar.setBackground(new java.awt.Color(141, 196, 162));
         guardar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 15)); // NOI18N
@@ -138,7 +140,7 @@ public class CrearOpc extends javax.swing.JPanel {
                 guardarActionPerformed(evt);
             }
         });
-        bg.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 200, -1, -1));
+        bg.add(guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
 
         BTSALI.setBackground(new java.awt.Color(101, 163, 130));
         BTSALI.setBorder(null);
@@ -245,6 +247,18 @@ public class CrearOpc extends javax.swing.JPanel {
         mds.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         bg.add(mds, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 50, 20));
 
+        label.setBorder(null);
+        label.setForeground(new java.awt.Color(204, 204, 204));
+        label.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        label.setText("none");
+        label.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        label.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                labelActionPerformed(evt);
+            }
+        });
+        bg.add(label, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 40, 220, 20));
+
         md.setBorder(null);
         md.setForeground(new java.awt.Color(102, 102, 102));
         md.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -284,6 +298,7 @@ public class CrearOpc extends javax.swing.JPanel {
 
        GlassPanePopup.closePopupLast();
         if (padre.creada.ndias == padre.creada.numdis) {
+            padre.creada.label = this.label.getText();
             padre.CrearOpcion();
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -292,6 +307,9 @@ public class CrearOpc extends javax.swing.JPanel {
         salir();  
     }//GEN-LAST:event_cancelarActionPerformed
     
+    public void visiblelabel(){
+        LABEL = true;
+    }
     
     private void salir(){
         padre.creada = null;
@@ -375,6 +393,10 @@ public class CrearOpc extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_HENTRAPropertyChange
 
+    private void labelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_labelActionPerformed
+
     private void mdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mdActionPerformed
@@ -420,6 +442,7 @@ public class CrearOpc extends javax.swing.JPanel {
         g2.fill(area);
         g2.dispose();
         super.paintComponent(grphcs);
+        this.label.setVisible(LABEL);
     }
 
     private Shape createRoundTopLeft() {
@@ -486,6 +509,7 @@ public class CrearOpc extends javax.swing.JPanel {
     private javax.swing.JLabel creandog;
     private javax.swing.JButton guardar;
     private javax.swing.JSeparator jSeparator1;
+    private custom.TextFieldd label;
     private custom.TextFieldd md;
     private custom.TextFieldd mds;
     // End of variables declaration//GEN-END:variables

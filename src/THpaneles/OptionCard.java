@@ -100,6 +100,7 @@ public class OptionCard extends javax.swing.JPanel {
         DAY1 = new javax.swing.JPanel();
         sun = new javax.swing.JLabel();
         DATA = new javax.swing.JLabel();
+        LABEL = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(153, 153, 153));
         setOpaque(false);
@@ -193,6 +194,12 @@ public class OptionCard extends javax.swing.JPanel {
         DAY1.add(DATA);
         DATA.setBounds(13, 8, 140, 14);
 
+        LABEL.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        LABEL.setForeground(new java.awt.Color(102, 102, 102));
+        LABEL.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        DAY1.add(LABEL);
+        LABEL.setBounds(10, 4, 150, 20);
+
         javax.swing.GroupLayout DAYSLayout = new javax.swing.GroupLayout(DAYS);
         DAYS.setLayout(DAYSLayout);
         DAYSLayout.setHorizontalGroup(
@@ -283,6 +290,8 @@ public class OptionCard extends javax.swing.JPanel {
             
             this.del.setEnabled(true);
             this.del.setVisible(true);
+            if (!this.LABEL.getText().equals("none")) this.DATA.setVisible(false);
+            if (!this.LABEL.getText().equals("none")) this.LABEL.setVisible(true);
         });
     }
     
@@ -304,6 +313,8 @@ public class OptionCard extends javax.swing.JPanel {
             
             this.del.setEnabled(false);
             this.del.setVisible(false);
+            this.LABEL.setVisible(false);
+           this.DATA.setVisible(true);
         });
     }
     
@@ -376,6 +387,10 @@ public class OptionCard extends javax.swing.JPanel {
         this.sun1.setForeground(Hourcolor(Hs[1]));
         this.sun2.setForeground(Hourcolor(Hs[2]));
         
+        
+        this.LABEL.setText(thisOpcion.label);
+        this.LABEL.setVisible(false);
+        
     }
 
     public opciones getThisOpciones() {
@@ -404,6 +419,7 @@ public class OptionCard extends javax.swing.JPanel {
     private javax.swing.JPanel DAY2;
     private javax.swing.JPanel DAY3;
     private javax.swing.JPanel DAYS;
+    private javax.swing.JLabel LABEL;
     private javax.swing.JButton del;
     private javax.swing.JLabel sun;
     private javax.swing.JLabel sun1;

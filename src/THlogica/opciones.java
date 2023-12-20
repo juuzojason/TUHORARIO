@@ -267,7 +267,7 @@ public class opciones {
 
     private boolean DNCdays(String code) { // (   abc,abc,   . )  DESENCRIPTA CADA DIA
         String[] componentes = code.split("\\,");
-        if (componentes.length != ndias) {
+        if (componentes.length != ndias + 1) {
            
             //System.out.println(componentes.length + "   Numero de opciones no valida:  " + ndias);
             return false;
@@ -279,14 +279,18 @@ public class opciones {
         opcion actual = cabeza;
         
         
-        for (int i = 0; i < componentes.length; i++) {
+        for (int i = 0; i < componentes.length-1; i++) {
             DNCsingle(componentes[i], nu);
         }
+        nu.label = componentes[componentes.length-1];
+        System.out.println(componentes[componentes.length-1]);
         newaction(nu,"added");
         return true;
     }
 
     private boolean DNCsingle(String code, opcion nueva) { //    abc   |   DESENCRIPTA FINALMENTE TODO
+        
+        if (code.equals("")) return false;
         
         try {
             int num1 = (int) (code.charAt(0)) - 97;
